@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<constant name="struts.devMode" value="true" />
+   <package name="helloworld" extends="struts-default">
+     
+      <action name="loginpage">
+            <result name="success">/WEB-INF/jsp/test.jsp</result>
+      </action>
+      
+      
+      <action name="upload">
+            <result name="success">/WEB-INF/jsp/ul.jsp</result>
+      </action>
+      <action name="uploadForm" 
+            class="org.train.UploadClass" 
+            method="execute">
+      	 	<interceptor-ref name="defaultStack">
+      	 		<param name="fileUpload.maximumSize">50000000</param>
+      	 	</interceptor-ref>
+            <result name="success">/WEB-INF/jsp/addsuccess.jsp</result>
+            <result name="error">/WEB-INF/jsp/addfail.jsp</result>
+      </action>
+      
+      <action name="add">
+            <result name="success">/WEB-INF/jsp/addsuccess.jsp</result>
+      </action>
+      
+      <action name="login" 
+            class="org.train.LoginStrut" 
+            method="execute">
+            <result name="success">/WEB-INF/jsp/addsuccess.jsp</result>
+            <result name="error">/WEB-INF/jsp/addfail.jsp</result>
+      </action>
+       <action name="index" >
+            <result>/index.jsp</result>
+      </action>
+   </package>
+</struts>
